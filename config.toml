@@ -12,7 +12,7 @@ defaultContentLanguage = "en"
 
 [language]
     [languages.en]
-        title = "Walden"
+        title = "Praxisberatung KONKRET"
         languageName = "English"
         languageCode = "en-US"
         weight = 1
@@ -21,7 +21,7 @@ defaultContentLanguage = "en"
         [languages.en.author]
             name = "Homecat"
             avatar = "images/default/avatar.jpg"
-            description = "Hi, I am Homecat, a Shaoxing native living in Shanghai. Reading, hiking, and coding are my hobbies. I have set my blog on Github to record interesting things and share with my friends."
+            description = "Ich begrüße Sie herzlich auf der Internetseite von Praxisberatung **KONKRET**, der Praxis für Supervision, Organisationsentwicklung sowie Mediation und bedanke mich für Ihr Interesse.  Bitte fühlen Sie sich zum Stöbern eingeladen und verschaffen Sie sich einen ersten Eindruck über mein Beratungs- und Fortbildungsangebot."
             email = "13050082@qq.com"
 
     [languages.zh]

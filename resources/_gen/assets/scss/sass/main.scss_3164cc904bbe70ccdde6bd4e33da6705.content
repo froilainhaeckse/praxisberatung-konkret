@@ -536,7 +536,7 @@ body {
     justify-content: center; }
     .carousel .carousel-toggle .carousel-clicker-container .carousel-clicker {
       color: rgba(248, 249, 250, 0.5);
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: bolder;
       text-decoration: none;
       transition: all 1s; }
