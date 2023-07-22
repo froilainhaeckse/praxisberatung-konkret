@@ -4,7 +4,6 @@ import os
 import requests
 import locale
 import re
-import frontmatter
 from bs4 import BeautifulSoup
 from datetime import datetime
 locale.setlocale(locale.LC_TIME, "de_DE") # german
@@ -63,16 +62,35 @@ def extract_dates(html_content):
 	return dates_list
 
 def generate_markdown_files(titles, dates):
+    content_dir = "content/blog/"
     if len(titles) != len(dates):
         raise ValueError("Titles and dates lists must have the same count.")
-    
+	
     # Loop through each title and date at the same time
     for title, date in zip(titles, dates):
-        generate_markdown_file(title, date)
+	    generate_markdown_file(content_dir, title, date)
 
-def generate_markdown_file(title, date):
-	pass
+def generate_markdown_file(content_dir, title, date):
+	# Set destination folder for Hugo content 
+	last_word = title.split()[-1]
+	filename = f"{content_dir}{date}_{last_word.lower()}.md"
+	markdown_content = f"""---
+		title: {title}
+		date: {date}
+		draft: false
+		author: "Margitta Kupler"
+		thumbnail: {"'/images/digitalfundstueckmonat.webp'" if last_word == "digitaltipp" else ""}
+		headline:
+		enabled: false
+		background: ""
+		---
 
+		<!--more-->
+
+		"""
+	with open(filename, 'w', encoding='utf-8') as f:
+		f.write(markdown_content)
+	return markdown_content
 
 def scrape_wordpress(url):
 	# Fetch WordPress page HTML
