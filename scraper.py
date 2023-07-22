@@ -62,19 +62,17 @@ def extract_dates(html_content):
 				dates_list.append(formatted_date)
 	return dates_list
 
-def generate_markdown_file(post_date, post_title, post_content, post_category):
-	post_url = "https://praxisberatung.wordpress.com"
-	extract_titles(post_url)
-	extract_dates(post_url)
-	# Create front matter with title, date
-	front_matter = frontmatter.dumps(post=None, data={'title': title,'date': date})
-	
-	# ... (same code as before) ...
+def generate_markdown_files(titles, dates):
+    if len(titles) != len(dates):
+        raise ValueError("Titles and dates lists must have the same count.")
+    
+    # Loop through each title and date at the same time
+    for title, date in zip(titles, dates):
+        generate_markdown_file(title, date)
+
+def generate_markdown_file(title, date):
 	pass
 
-def extract_content(post_url):
-	# ... (same code as before) ...
-	pass
 
 def scrape_wordpress(url):
 	# Fetch WordPress page HTML
@@ -86,3 +84,4 @@ if __name__ == "__main__":
     html_content = scrape_wordpress(url)
     titles = extract_titles(html_content)
     dates = extract_dates(html_content)
+    generate_markdown_files(titles, dates)
