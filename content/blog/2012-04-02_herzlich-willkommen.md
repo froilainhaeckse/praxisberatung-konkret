@@ -3,9 +3,9 @@ title: "Herzlich Willkommen"
 date: 2012-04-02
 draft: false
 author: "Margitta Kupler"
-categories: "Theme Walden"
-tags: ["Hugo","Walden"]
-thumbnail: ""
+categories: ""
+tags: [""]
+# thumbnail: "/images/index_willkommen_banner.webp"
 headline: 
     enabled: true
     background: ""
