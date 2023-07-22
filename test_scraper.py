@@ -1,6 +1,7 @@
 # test_scraper.py
 
 import unittest
+from bs4 import BeautifulSoup
 from datetime import datetime
 from scraper import extract_titles, extract_dates
 
@@ -8,7 +9,12 @@ class TestScraper(unittest.TestCase):
 
     def test_extract_titles(self):
         # Test cases for extract_title function
-        url = "https://praxisberatung.wordpress.com"
+        html_content_file = "html_content.txt"
+
+        with open(html_content_file, 'r', encoding='utf-8') as file:
+            html_content = file.read()
+
+        soup = BeautifulSoup(html_content, 'html.parser')
 
         expected_titles = [
             "Herzlich Willkommen",
@@ -18,13 +24,18 @@ class TestScraper(unittest.TestCase):
             "Mein Digitaltipp"
         ]
 
-        actual_titles = extract_titles(url)
+        actual_titles = extract_titles(soup)
         for i in range(len(expected_titles)):
             self.assertEqual(actual_titles[i], expected_titles[i])
     
     def test_extract_dates(self):
         # Test cases for extract_title function
-        url = "https://praxisberatung.wordpress.com"
+        html_content_file = "html_content.txt"
+
+        with open(html_content_file, 'r', encoding='utf-8') as file:
+            html_content = file.read()
+        
+        soup = BeautifulSoup(html_content, 'html.parser')
 
         expected_dates = [
             "2012-04-02",
@@ -34,8 +45,7 @@ class TestScraper(unittest.TestCase):
             "2023-04-26"
         ]
 
-        # print(extract_dates(url))
-        actual_dates = extract_dates(url)
+        actual_dates = extract_dates(soup)
 
         # Check if the returned value is a list
         self.assertIsInstance(actual_dates, list)
