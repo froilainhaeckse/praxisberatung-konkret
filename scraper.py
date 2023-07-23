@@ -46,10 +46,13 @@ def extract_data(html_content):
 			post_date_text = p_tag_after_h2.get_text()
 		else:
 			post_date_text = h2_tag.find_next('div').get_text()
-		if not post_date_text:
-			# Extract the date from the first welcome post
+		if post_date_text == "Veröffentlicht am 10. Septembers 2019":
+			# Typo
+			post_date_text = "Veröffentlicht am 10. September 2019"
+		if post_date == None or post_date == "" or post_date_text == ".":
+			# Extract the date from the first welcome post)
 			post_date_text = html_content.find('p').find('span', class_='entry-date').get_text()
-
+		
 		post_date = extract_date(post_date_text)
 		
 		consolited_data_element = {"title": post_title, "date": post_date}
