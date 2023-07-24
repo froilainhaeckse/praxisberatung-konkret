@@ -3,13 +3,14 @@
 import requests
 import locale
 import re
+import html2text
 from bs4 import BeautifulSoup
 from datetime import datetime
 locale.setlocale(locale.LC_TIME, "de_DE") # german
 
 def extract_date(date_in_a_string):
 	# Define the regular expression pattern to match the date format, include Mail because of Typo
-	date_pattern = r'\d{1,2}\. ?(?:Januar|Februar|März|April|Mai|Mail|Juni|Juli|August|September|Oktober|November|Dezember) \d{4}'
+	date_pattern = r'\d{1,2}\. ?(?:Januar|Februar|März|April|Mai|Mail|Juni|Juli|August|September|Septembers|Oktober|November|Dezember) \d{4}'
 	match = re.search(date_pattern, date_in_a_string)
 	if match:
 		extracted_date = match.group()
@@ -18,6 +19,8 @@ def extract_date(date_in_a_string):
 			extracted_date = "09. Mai 2022"
 		if extracted_date == "02. Mail 2022":
 			extracted_date = "02. Mai 2022"
+		if extracted_date == "10. Septembers 2019":
+			extracted_date = "10. September 2019"
 		try:
 			date_obj = datetime.strptime(extracted_date, "%d. %B %Y")
 		except ValueError:
@@ -25,65 +28,86 @@ def extract_date(date_in_a_string):
 		formatted_date = date_obj.strftime("%Y-%m-%d")
 		return formatted_date
 
-def extract_data(html_content):
-	h2_tags = html_content.find_all('h2')
-	consolited_data_list = []
+def extract_data(html_content_list):
+	data_dictionary = []
 	post_title = ""
 	post_date = ""
+	for i, html_content in enumerate(html_content_list):
+		# remove wordpress footer for last post
+		if i == len(html_content_list) - 1:
+			html_content = html_content.split("</div>")[0]
+		post = BeautifulSoup(html_content, 'html.parser')
 
-	for h2_tag in h2_tags:
-        # Extract title
-		post_title = h2_tag.get_text().strip()
-
-		# Check if the post_title starts with "Mein" or "Herzlich" or "Froh"
-		if not (post_title.startswith("Mein") or post_title.startswith("Herzlich") or post_title.startswith("Froh")):
-			continue
-
-		p_tag_after_h2 = h2_tag.find_next('p')
+		# SET AND REMOVE TITLE
+		title_tag_for_post = post.find('h2')
+		post_title = title_tag_for_post.get_text()
+		if title_tag_for_post:
+			title_tag_for_post.extract()  # Removes the first h2 tag from the parse tree
 		
-		post_date_text = ""
-		if p_tag_after_h2.get_text().startswith("Veröffentlicht"):
-			post_date_text = p_tag_after_h2.get_text()
-		else:
-			post_date_text = h2_tag.find_next('div').get_text()
-		if post_date_text == "Veröffentlicht am 10. Septembers 2019":
-			# Typo
-			post_date_text = "Veröffentlicht am 10. September 2019"
-		if post_date == None or post_date == "" or post_date_text == ".":
+		# SET AND REMOVE DATE
+		post_date = ""
+
+		first_p_tag_in_post = post.find('p')
+		first_div_tag_in_post = post.find('div')
+		div_tag_with_specific_class_in_post = post.find('div', class_="exhibition-detail__status")
+		if first_p_tag_in_post is not None and first_p_tag_in_post.get_text().startswith("Veröffentlicht"):
+			post_date = extract_date(first_p_tag_in_post.get_text())
+			first_p_tag_in_post.extract()
+		elif first_div_tag_in_post is not None and first_div_tag_in_post.get_text().startswith("Veröffentlicht"):
+			post_date = extract_date(first_div_tag_in_post.get_text())
+			first_div_tag_in_post.extract()
+		elif i == 0:
 			# Extract the date from the first welcome post)
-			post_date_text = html_content.find('p').find('span', class_='entry-date').get_text()
+			p_tag_for_welcome_post = post.find('p').find('span', class_='entry-date')
+			post_date = extract_date(p_tag_for_welcome_post.get_text())
+			p_tag_for_welcome_post.extract()
+		elif div_tag_with_specific_class_in_post:
+			post_date = extract_date(div_tag_with_specific_class_in_post.get_text())
+			div_tag_with_specific_class_in_post.extract()
+		else:
+			print("DATE MISSING")
 		
-		post_date = extract_date(post_date_text)
+		# CONTENT
+		a_tag_with_butterfly_to_remove = post.find('a', class_='single-image-gallery', href="https://praxisberatung.wordpress.com/supervision-mv/pkonkret_schmetterling-2/")
+		if a_tag_with_butterfly_to_remove:
+			a_tag_with_butterfly_to_remove.extract()  # Removes the <a> tag from the parse tree
 		
-		consolited_data_element = {"title": post_title, "date": post_date}
-		consolited_data_list.append(consolited_data_element)
-
-	return consolited_data_list
+		stripped_post = str(post)
+		markdown_content = html2text.html2text(stripped_post)		
+		consolited_data_element = {"title": post_title, "date": post_date, "content": markdown_content}
+		data_dictionary.append(consolited_data_element)
+		
+	return data_dictionary
 
 def generate_markdown_files(data):
     content_dir = "content/blog/"
 	
     for item in data:
-	    generate_markdown_file(content_dir, item["title"], item["date"])
+	    generate_markdown_file(content_dir, item["title"], item["date"], item["content"])
+	
 
-def generate_markdown_file(content_dir, title, date):
+def generate_markdown_file(content_dir, title, date, content):
 	# Set destination folder for Hugo content 
-	last_word = title.split()[-1]
+	last_word = title.split()[-1].lower()
+	thumbnail_value = "/images/digitalfundstueckmonat.webp" if last_word == "digitaltipp" else ""
 	filename = f"{content_dir}{date}_{last_word.lower()}.md"
 	markdown_content = f"""---
-		title: {title}
-		date: {date}
-		draft: false
-		author: "Margitta Kupler"
-		thumbnail: {"'/images/digitalfundstueckmonat.webp'" if last_word == "digitaltipp" else ""}
-		headline:
-		enabled: false
-		background: ""
-		---
+title: "{title}"
+date: "{date}"
+draft: false
+author: "Margitta Kupler"
+categories: "{last_word}"
+thumbnail: "{thumbnail_value}"
+headline:
+  enabled: false
+  background: ""
+---
 
-		<!--more-->
+{content}
 
-		"""
+<!--more-->
+
+"""
 	with open(filename, 'w', encoding='utf-8') as f:
 		f.write(markdown_content)
 	return markdown_content
@@ -91,10 +115,12 @@ def generate_markdown_file(content_dir, title, date):
 def scrape_wordpress(url):
 	# Fetch WordPress page HTML
 	response = requests.get(url)
-	return BeautifulSoup(response.text, 'html.parser')
+	# Use regular expressions to split the content based on the specified patterns
+	split_pattern = r'<h2><strong>→</strong></h2>|<p><strong>→</strong></p>'
+	return re.split(split_pattern, response.text)
 
 if __name__ == "__main__":
     url = "https://praxisberatung.wordpress.com/"
-    html_content = scrape_wordpress(url)
-    data = extract_data(html_content)
-    generate_markdown_files(data)
+    html_content_list = scrape_wordpress(url)
+    data_dictionary = extract_data(html_content_list)
+    generate_markdown_files(data_dictionary)
