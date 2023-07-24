@@ -1,71 +1,42 @@
-# 生成网站根目录的地址
 baseURL = "https://walden.genway.com.cn/"
 
-# 主题
 theme = "hugo-theme-walden"
 
-# 列表分页基数
 paginate = 12
 
-# 多语言设置
-defaultContentLanguage = "en"
+defaultContentLanguage = "de"
 
 [language]
-    [languages.en]
-        title = "Walden"
-        languageName = "English"
-        languageCode = "en-US"
+
+    [languages.de]
+        title = "Praxisberatung KONKRET"
+        description = "Beratungspraxis für Supervision, Mediation und Organisationsentwicklung"
+        languageName = "German"
+        languageCode = "de"
         weight = 1
 
-        # 用户参数
-        [languages.en.author]
-            name = "Homecat"
-            avatar = "images/default/avatar.jpg"
-            description = "Hi, I am Homecat, a Shaoxing native living in Shanghai. Reading, hiking, and coding are my hobbies. I have set my blog on Github to record interesting things and share with my friends."
-            email = "13050082@qq.com"
+        [languages.de.author]
+            name = "Margitta Kupler"
+            avatar = "images/margitta_foto.webp"
+            description = "Ich begrüße Sie herzlich auf der Internetseite von Praxisberatung KONKRET, der Praxis für Supervision, Organisationsentwicklung sowie Mediation und bedanke mich für Ihr Interesse.  Bitte fühlen Sie sich zum Stöbern eingeladen und verschaffen Sie sich einen ersten Eindruck über mein Beratungs- und Fortbildungsangebot."
+            email = "kontakt(at)praxisberatung-konkret.de"
 
-    [languages.zh]
-        title = "瓦尔登湖"
-        languageName = "中文"
-        languageCode = "zh-Hans-CN"
-        weight = 2
-
-        [languages.zh.author]
-            name = "家猫"
-            avatar = "images/default/avatar.jpg"
-            description = "吾，家猫是也。生于越，学业于沪。喜读书闲游，好文字代码，置网站于 Github，录趣事以享亲友。"
-            email = "13050082@qq.com"
-
-# 主菜单
-[languages.en.menus]
-    [[languages.en.menus.main]]
+[languages.de.menus]
+    [[languages.de.menus.main]]
         identifier = "home"
         name = "Home"
         url = "/"
         weight = 10
-    [[languages.en.menus.main]]
+    [[languages.de.menus.main]]
         identifier = "blog"
         name = "Blog"
         url = "/blog/"
-        weight = 20
-
-[languages.zh.menus]
-    [[languages.zh.menus.main]]
-        identifier = "home"
-        name = "首页"
-        url = "/zh/"
-        weight = 10
-    [[languages.zh.menus.main]]
-        identifier = "blog"
-        name = "博客"
-        url = "/zh/blog/"
         weight = 20
 
 [params]
     headline = "/images/default/headline.jpg"
     thumbnail = "/images/default/thumbnail.jpg"
     
-# 用于渲染的参数
 [markup]
     defaultMarkdownHandler = "goldmark"
     [markup.goldmark]
@@ -101,7 +72,6 @@ defaultContentLanguage = "en"
         startLevel = 2
 
 
-# 用于 Hugo theme 发布的参数
 [module]
   [module.hugoVersion]
     extended = true
