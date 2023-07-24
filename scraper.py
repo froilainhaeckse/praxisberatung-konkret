@@ -80,7 +80,7 @@ def extract_data(html_content_list):
 	return data_dictionary
 
 def generate_markdown_files(data):
-    content_dir = "content/blog/"
+    content_dir = "content/blog/scraped_content"
 	
     for item in data:
 	    generate_markdown_file(content_dir, item["title"], item["date"], item["content"])
