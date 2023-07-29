@@ -11,9 +11,10 @@ defaultContentLanguage = "de"
     [languages.de]
         title = "Praxisberatung KONKRET"
         description = "Beratungspraxis für Supervision, Mediation und Organisationsentwicklung"
-        languageName = "German"
-        languageCode = "de"
-        weight = 1
+        [languages.de.params]
+            contentDir = 'content/german'
+            languageName = 'Deutsch'
+            languageCode = "de"
 
         [languages.de.author]
             name = "Margitta Kupler"
