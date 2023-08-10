@@ -13,6 +13,8 @@ headline:
 
 # Gefühle: Die Sprache des Selbst
 
+<!--more-->
+
 ![Gefühle.](https://www.medienservice-medizin.de/out/pictures/generated/product/1/353_221_100/790517-gefuehle.jpg)
 
 ### Gefühle verstehen und effektiv nutzen!  

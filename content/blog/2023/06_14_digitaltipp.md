@@ -7,7 +7,7 @@ categories: "digitaltipp"
 tags: [""]
 thumbnail: "/images/digitafundstück_billboard.jpg"
 headline:
-  enabled: false
+  enabled: true
   background: ""
 ---
 

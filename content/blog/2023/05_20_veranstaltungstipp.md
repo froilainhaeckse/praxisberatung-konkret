@@ -7,7 +7,7 @@ categories: "veranstaltungstipp"
 tags: [""]
 thumbnail: ""
 headline:
-  enabled: false
+  enabled: true
   background: ""
 ---
 # Ihr Streit - Unsere Kompetenz

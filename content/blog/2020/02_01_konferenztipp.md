@@ -3,7 +3,7 @@ title: "Mein Konferenztipp"
 date: "2020-02-01"
 draft: false
 author: "Margitta Kupler"
-categories: "buchtipp"
+categories: "konferenztipp"
 tags: [""]
 thumbnail: ""
 headline:

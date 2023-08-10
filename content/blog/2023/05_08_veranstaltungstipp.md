@@ -7,7 +7,7 @@ categories: "veranstaltungstipp"
 tags: [""]
 thumbnail: ""
 headline:
-  enabled: false
+  enabled: true
   background: ""
 ---
 # Der vierte Digitaltag am 16. Juni 2023

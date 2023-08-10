@@ -7,7 +7,7 @@ categories: "konferenztipp"
 tags: [""]
 thumbnail: ""
 headline:
-  enabled: false
+  enabled: true
   background: ""
 ---
 
