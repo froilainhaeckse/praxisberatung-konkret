@@ -4,7 +4,7 @@ layout: single.supervision_und_mediation
 draft: false
 headline:
   enabled: false
-  background: "/images/steinturm_headline.png"
+  background: "/images/headlines/steinturm_headline.png"
 ---
 
 # Supervision

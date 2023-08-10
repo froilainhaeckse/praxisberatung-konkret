@@ -4,7 +4,7 @@ layout: single.video_und_online
 draft: false
 headline:
   enabled: false
-  background: "/images/video_headline.png"
+  background: "/images/headlines/video_headline.png"
 ---
 
 # → Videosupervision

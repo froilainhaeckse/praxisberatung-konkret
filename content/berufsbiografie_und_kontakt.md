@@ -4,7 +4,7 @@ layout: single.berufsbiografie_und_kontakt
 draft: false
 headline:
   enabled: false
-  background: "/images/kueste_headline.png"
+  background: "/images/headlines/kueste_headline.png"
 ---
 
 # Berufsbiografie
