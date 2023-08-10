@@ -19,7 +19,11 @@ defaultContentLanguage = "de"
         [languages.de.author]
             name = "Margitta Kupler"
             avatar = "images/margitta_foto.webp"
-            description = "Ich begrüße Sie herzlich auf der Internetseite von Praxisberatung KONKRET, der Praxis für Supervision, Organisationsentwicklung sowie Mediation und bedanke mich für Ihr Interesse.  Bitte fühlen Sie sich zum Stöbern eingeladen und verschaffen Sie sich einen ersten Eindruck über mein Beratungs- und Fortbildungsangebot."
+            description_1 = "Jahrgang 1961"
+            description_2 = "Diplom-Sozialarbeiterin"
+            description_3 = "Supervisorin"
+            description_4 = "Mediatorin"
+            description_5 = "Traumazentrierte Fachberaterin"
             email = "kontakt(at)praxisberatung-konkret.de"
 
 [languages.de.menus]
