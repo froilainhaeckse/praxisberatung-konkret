@@ -33,6 +33,26 @@ defaultContentLanguage = "de"
         name = "Blog"
         url = "/blog/"
         weight = 20
+    [[languages.de.menus.main]]
+        identifier = "supervision_und_mediation"
+        name = "Supervision & Mediation"
+        url = "/supervision_und_mediation/"
+        weight = 20
+    [[languages.de.menus.main]]
+        identifier = "video_und_online"
+        name = "Video & Online"
+        url = "/video_und_online/"
+        weight = 20
+    [[languages.de.menus.main]]
+        identifier = "berufsbiografie_und_kontakt"
+        name = "Berufsbiografie & Kontakt"
+        url = "/berufsbiografie_und_kontakt/"
+        weight = 30
+    [[languages.de.menus.main]]
+        identifier = "datenschutz_und_impressum"
+        name = "Datenschutz & Impressum"
+        url = "/datenschutz_und_impressum/"
+        weight = 40
 
 [params]
     headline = "/images/default/headline.jpg"
