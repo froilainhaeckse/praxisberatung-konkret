@@ -4,7 +4,7 @@ layout: single.datenschutz_und_impressum
 draft: false
 headline:
   enabled: false
-  background: "/images/headlines/voegel_headline.png"
+  background: "/images/headlines/wasser_headline.png"
 ---
 
 # → Datenschutzhinweise
