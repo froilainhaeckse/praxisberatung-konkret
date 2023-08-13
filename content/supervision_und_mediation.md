@@ -7,7 +7,7 @@ headline:
   background: "/images/headlines/steinturm_headline.png"
 ---
 
-# Supervision
+# → Supervision
 
 Supervision bietet die Möglichkeit, innerhalb eines Beratungs- und Lernprozesses die fachliche Handlungskompetenz zu erhöhen sowie die berufliche Rolle zu reflektieren. Durch die professionelle Begleitung unterstützt Supervision in dem Prozess der Qualitätsentwicklung und der Qualitätssicherung sowie bei der angemessenen Wahrnehmung und Einschätzung von Personen und Funktionen innerhalb der Organisation.
 
@@ -40,7 +40,7 @@ Supervision dient der Erhöhung der Arbeitszufriedenheit, weil unter anderem St�
 
 <br>
 
-# Mediation
+# → Mediation
 
 ### Meine Kompetenz:
 
@@ -60,7 +60,7 @@ Supervision dient der Erhöhung der Arbeitszufriedenheit, weil unter anderem St�
 
 <br>
 
-# Organisationsentwicklung
+# → Organisationsentwicklung
 ### Meine Kompetenz:
 
 - Zertifizierte Organisationsberaterin, Institut Triangel, Berlin
@@ -78,7 +78,7 @@ Supervision dient der Erhöhung der Arbeitszufriedenheit, weil unter anderem St�
 
 <br>
 
-# Seminare & Workshops
+# → Seminare & Workshops
 ### Meine Kompetenz:
 
 - Anerkannte Trainerin für Motivierende Gesprächsführung (Motivational Interviewing, MI)

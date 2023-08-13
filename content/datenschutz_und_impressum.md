@@ -7,7 +7,7 @@ headline:
   background: "/images/headlines/voegel_headline.png"
 ---
 
-# Datenschutzhinweise
+# → Datenschutzhinweise
 Die nachfolgende Datenschutzhinweise gelten für die Nutzung der Webseite www.praxisberatung-konkret.de (nachfolgend „Website“).
 
 ### Verantwortliche Stelle
@@ -46,7 +46,7 @@ Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten z
 <!-- TO DO: REMOVE br tag -->
   
 
-# Impressum
+# → Impressum
 ### Herausgeberin:
 
 Praxisberatung KONKRET, Margitta Kupler, Seedorf 37, 17109 Demmin, Mecklenburg-Vorpommern

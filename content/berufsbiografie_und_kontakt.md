@@ -7,7 +7,7 @@ headline:
   background: "/images/headlines/kueste_headline.png"
 ---
 
-# Berufsbiografie
+# → Berufsbiografie
 
 #### Margitta Kupler
 ###### Jahrgang 1961
@@ -109,7 +109,7 @@ Meine Arbeitsweise ist getragen von der Motivation die einzelne Person zu stärk
 
 <br>
 
-# Kontakt
+# → Kontakt
 ### Praxisberatung KONKRET
 
 ###### Margitta Kupler
