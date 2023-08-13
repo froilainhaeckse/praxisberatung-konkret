@@ -96,6 +96,8 @@ defaultContentLanguage = "de"
         ordered = false
         startLevel = 2
 
+[permalinks]
+  blog = "/blog/:year/:slug/"
 
 [module]
   [module.hugoVersion]
