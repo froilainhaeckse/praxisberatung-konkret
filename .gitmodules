@@ -1,7 +1,8 @@
 [submodule "themes/hugo-theme-walden"]
 	path = themes/hugo-theme-walden
 	url = https://github.com/froilainhaeckse/hugo-theme-walden.git
+	branch = main
 [submodule "public"]
 	path = public
-	url = git@github.com:froilainhaeckse/froilainhaeckse.github.io.git
+	url = https://github.com/froilainhaeckse/froilainhaeckse.github.io.git
 	branch = main
