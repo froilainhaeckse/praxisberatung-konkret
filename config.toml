@@ -35,7 +35,7 @@ defaultContentLanguage = "de"
     [[languages.de.menus.main]]
         identifier = "blog"
         name = "Blog"
-        url = "/blog/index.html"
+        url = "/blog/"
         weight = 20
     [[languages.de.menus.main]]
         identifier = "supervision_und_mediation"
